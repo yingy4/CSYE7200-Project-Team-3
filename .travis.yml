@@ -1,0 +1,15 @@
+language: scala
+scala:
+  - 2.11.12
+jdk:
+  - oraclejdk8
+
+script:
+  - pwd
+  - ls -a
+
+notifications:
+  email:
+    - Zhou.yiy@husky.neu.edu
+    - Li.yang5@husky.neu.edu
+    - Liu.zheng4@husky.neu.edu
