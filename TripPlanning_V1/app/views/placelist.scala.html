@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>place list</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="@routes.Assets.versioned("stylesheets/fontawesome-all.css")"  rel="stylesheet">
+    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/main.css")" />
+
+    <style>
+
+        #centeredmenu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        #centeredmenu li {
+            float: left;
+        }
+
+        #centeredmenu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        /*鼠标移动到选项上修改背景颜色 */
+        #centeredmenu  li a:hover {
+            background-color: #111;
+        }
+
+        td.width1{
+            width:150px;
+        }
+        td.width2{
+            width:300px;
+        }
+        td.width3{
+            width:800px;
+        }
+
+
+
+    </style>
+
+    <script  type="text/javascript">
+        window.onload=function(){
+            document.getElementById("result").style.display = "block";
+            document.getElementById("fav").style.display = "none";
+        }
+    </script>
+
+</head>
+<body>
+
+<div id="centeredmenu">
+    <ul id="1">
+        <li id="2"><a href="#result" onclick="{document.getElementById('result').style.display = 'block';document.getElementById('fav').style.display = 'none';}">Result</a></li>
+        <li id="3"><a href="#fav" onclick="{document.getElementById('fav').style.display = 'block';document.getElementById('result').style.display = 'none';}">Favoriates</a></li>
+        <li id="4" style="float:right"><a href="#about">Back</a></li>
+    </ul>
+</div>
+
+
+
+<div id="result" class="divided">
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2>Result</h2>
+            <!-- Table -->
+            <section>
+                <div class="content" align="center">
+                    <div class="table-wrapper">
+                        <table align="left">
+                            <thead>
+                            <tr>
+                                <td width=150px><b>#</b></td>
+                                <td width=150px><b>Category</b></td>
+                                <td width=300px><b>Name</b></td>
+                                <td width=800px><b>Address</b></td>
+                                <td width=150px><b>Favoriate</b></td>
+                                <td width=150px><b>Detail</b></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="width1">0</td>
+                                <td class="width1"><i class="icon fa fa-map-pin"></i></td>
+                                <td class="width2">Default</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href="../placedetail"><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">1</td>
+                                <td class="width1"><i class="icon fa fa-cutlery"></i></td>
+                                <td class="width2">restaurant</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">2</td>
+                                <td class="width1"><i class="icon fas fa-paw"></i></td>
+                                <td class="width2">Zoo</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">3</td>
+                                <td class="width1"><i class="icon fas fa-suitcase"></i></td>
+                                <td class="width2">Travel Agency</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">4</td>
+                                <td class="width1"><i class="icon fas fa-exchange"></i></td>
+                                <td class="width2">Transit Station</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">5</td>
+                                <td class="width1"><i class="icon fas fa-train"></i></td>
+                                <td class="width2">Train Station</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">6</td>
+                                <td class="width1"><i class="icon fas fa-taxi"></i></td>
+                                <td class="width2">Taxi Stand</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">7</td>
+                                <td class="width1"><i class="icon fas fa-subway"></i></td>
+                                <td class="width2">Subway Station</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">8</td>
+                                <td class="width1"><i class="icon fas fa-soccer-ball-o"></i></td>
+                                <td class="width2">Stadium</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">9</td>
+                                <td class="width1"><i class="icon fas fa-shopping-bag"></i></td>
+                                <td class="width2">Shopping Mall</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">10</td>
+                                <td class="width1"><i class="icon fas fa-product-hunt"></i></td>
+                                <td class="width2">Parking</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">11</td>
+                                <td class="width1"><i class="icon fas fa-tree"></i></td>
+                                <td class="width2">Park</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">12</td>
+                                <td class="width1"><i class="icon fas fa-glass"></i></td>
+                                <td class="width2">Night Club</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">13</td>
+                                <td class="width1"><i class="icon fas fa-image"></i></td>
+                                <td class="width2">Art Gallery</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">14</td>
+                                <td class="width1"><i class="icon fas fa-film"></i></td>
+                                <td class="width2">Movie Theater</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">15</td>
+                                <td class="width1"><i class="icon fas fa-hotel"></i></td>
+                                <td class="width2">Hotel</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">16</td>
+                                <td class="width1"><i class="icon fas fa-money"></i></td>
+                                <td class="width2">Casino</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">17</td>
+                                <td class="width1"><i class="icon fas fa-bank"></i></td>
+                                <td class="width2">Bank</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">18</td>
+                                <td class="width1"><i class="icon fas fa-plane"></i></td>
+                                <td class="width2">Airport</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">19</td>
+                                <td class="width1"><i class="icon fab fa-child"></i></td>
+                                <td class="width2">Amusement Park</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">20</td>
+                                <td class="width1"><i class="icon fas fa-shopping-cart"></i></td>
+                                <td class="width2">Supermarket</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">21</td>
+                                <td class="width1"><i class="icon fas fa-hospital-o"></i></td>
+                                <td class="width2">Hospital</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">22</td>
+                                <td class="width1"><i class="icon fas fa-linux"></i></td>
+                                <td class="width2">Aquarium</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">23</td>
+                                <td class="width1"><i class="icon fas fa-coffee"></i></td>
+                                <td class="width2">Cafe</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">24</td>
+                                <td class="width1"><i class="icon fas fa-bus"></i></td>
+                                <td class="width2">Bus Station</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">25</td>
+                                <td class="width1"><i class="icon fas fa-graduation-cap"></i></td>
+                                <td class="width2">University</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="width1">26</td>
+                                <td class="width1"><i class="icon fas fa-birthday-cake"></i></td>
+                                <td class="width2">Bakery</td>
+                                <td class="width3">adresssssssssssss</td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-star-o"></i></a></td>
+                                <td class="width1"><a href=" "><i class="icon fa fa-chevron-circle-right"></i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <ul class="actions fit small">
+                        <li><a href="#" class="button fit small">Previous</a></li>
+                        <li><a href="#" class="button fit small">Next</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </section>
+</div>
+
+
+<div id="fav" class="divided">
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2>Fav</h2>
+            <!-- Table -->
+            <section>
+                <div class="content">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name2</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Item 1</td>
+                                <td>Ante turpis integer aliquet porttitor.</td>
+                                <td>29.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 2</td>
+                                <td>Vis ac commodo adipiscing arcu aliquet.</td>
+                                <td>19.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 3</td>
+                                <td> Morbi faucibus arcu accumsan lorem.</td>
+                                <td>29.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 4</td>
+                                <td>Vitae integer tempus condimentum.</td>
+                                <td>19.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 5</td>
+                                <td>Ante turpis integer aliquet porttitor.</td>
+                                <td>29.99</td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+</div>
+
+
+
+
+</body>
+</html>
