@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>use case</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script  type="text/javascript">
+        window.onload=function(){
+            $('#usecase1').css('display','none');
+            $('#usecase2').css('display','none');
+            $('#otherLocation').attr('disabled',true);
+            $('#otherLocation2').attr('disabled',true);
+        }
+    </script>
+</head>
+<body>
+
+<!-- choose use case -->
+<section class="wrapper style1 align-center">
+    <div class="inner">
+        <h2>Choose a use case</h2>
+        <p>This is an <strong>Items</strong> element, and it's basically just a grid for organizing items of various types. You can customize its <span class="demo-controls">appearance with a number of modifiers</span>, as well as assign it an optional <code>onload</code> or <code>onscroll</code> transition modifier (<a href="#reference-items">details</a>).</p>
+        <div class="items style1 medium onscroll-fade-in">
+            <section>
+                <a href="#usecase1"><span class="icon style2 major fa-diamond" style="cursor:pointer" id="span1" onclick="{$('#usecase1').css('display','block');$('#usecase2').css('display','none');}"></span></a>
+                <h3>one</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dui turpis, cursus eget orci amet aliquam congue semper. Etiam eget ultrices risus nec tempor elit.</p>
+            </section>
+            <section>
+                <a href="#usecase2"><span class="icon style2 major fa-paper-plane" style="cursor:pointer" id="span2" onclick="{$('#usecase1').css('display','none');$('#usecase2').css('display','block');}"></span></a>
+                <h3>Two</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dui turpis, cursus eget orci amet aliquam congue semper. Etiam eget ultrices risus nec tempor elit.</p>
+            </section>
+
+        </div>
+    </div>
+</section>
+
+<!-- choose use case one -->
+<div id="usecase1" class="divided">
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2>Use case one title</h2>
+            <p>Finally, here are some additional elements you <em>might</em> find useful (and yup, they look fine with any <span class="demo-controls">appearance</span>).</p>
+            <div class="index align-left">
+                <section>
+                    <header>
+                        <h3>First Use Case</h3>
+                    </header>
+                    <div class="content">
+
+                        <form method="post" action="#">
+                            <div class="field">
+                                <label for="keyword">Keyword</label>
+                                <input type="text" name="keyword" id="keyword" value="" />
+                            </div>
+                            <div class="field">
+                                <label for="travelMode">Travel Mode</label>
+                                <div class="select-wrapper">
+                                    <select name="travelMode" id="travelMode">
+                                        <!-- default by car -->
+                                        <option value="driving">- Default -</option>
+                                        <option value="driving">Driving</option>
+                                        <option value="walking">Walking</option>
+                                        <option value="bicycling">Bicycling</option>
+                                        <option value="transit">Transit</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="time">Arriving Within (minutes)</label>
+                                <input type="text" name="time" id="time" value="" />
+                            </div>
+                            <div class="field">
+                                <label>From</label>
+                            </div>
+                            <div class="field third first">
+                                <input type="radio" id="currentLocation" name="from" onclick="{$('#otherLocation').attr('disabled',true);$('#otherLocation').style.backgroundColor='grey';}" checked />
+                                <label for="currentLocation">Current Location</label>
+                            </div>
+                            <div class="field third">
+
+                                <input type="radio" id="customLocation" name="from" onclick="$('#otherLocation').attr('disabled',false);"/>
+                                <label for="customLocation">Other. Please specify:</label>
+                            </div>
+                            <div class="field">
+                                <input type="text" name="otherLocation" id="otherLocation" value=""/>
+                            </div>
+
+                            <ul class="actions">
+                                <li><input type="submit" name="submit" id="submit" value="Search" /></li>
+                            </ul>
+                        </form>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- choose use case two -->
+<div id="usecase2" class="divided">
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2>Use case two title</h2>
+            <p>Finally, here are some additional elements you <em>might</em> find useful (and yup, they look fine with any <span class="demo-controls">appearance</span>).</p>
+            <div class="index align-left">
+                <section>
+                    <header>
+                        <h3>Second Use Case</h3>
+                    </header>
+                    <div class="content">
+
+                        <form method="post" action="#">
+                            <div class="field">
+                                <label for="keyword2">Keyword</label>
+                                <input type="text" name="keyword2" id="keyword2" value="" />
+                            </div>
+                            <div class="field">
+                                <label>From</label>
+                            </div>
+                            <div class="field third first">
+                                <input type="radio" id="currentLocation2" name="from" onclick="$('#otherLocation2').attr('disabled',true);" checked  />
+                                <label for="currentLocation2">Current Location</label>
+                            </div>
+                            <div class="field third">
+
+                                <input type="radio" id="customLocation2" name="from" onclick="$('#otherLocation2').attr('disabled',false);"/>
+                                <label for="customLocation2">Other. Please specify:</label>
+                            </div>
+                            <div class="field">
+                                <input type="text" name="otherLocation2" id="otherLocation2" value=""/>
+                            </div>
+
+                            <ul class="actions">
+                                <li><input type="submit" name="submit" id="submit2" value="Search" /></li>
+                            </ul>
+                        </form>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/demo.js"></script>
+
+</body>
+</html>
