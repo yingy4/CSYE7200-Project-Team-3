@@ -3,8 +3,8 @@
 <head>
     <title>place Detail</title>
     <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <style>
@@ -40,20 +40,66 @@
         td.width2{
             width:800px;
         }
-
     </style>
+    <script  type="text/javascript">
+        window.onload=function(){
+            $('#map').css('display','block');
+            $('#info').css('display','none');
+            $('#photo').css('display','none');
+        }
+    </script>
 
 </head>
 <body>
 
 <div id="centeredmenu">
     <ul>
-        <li ><a href="#map" onclick="{document.getElementById('result').style.display = 'block';document.getElementById('fav').style.display = 'none';}">Map</a></li>
-        <li ><a href="#info" onclick="{document.getElementById('fav').style.display = 'block';document.getElementById('result').style.display = 'none';}">Info</a></li>
-        <li ><a href="#photo" onclick="{document.getElementById('fav').style.display = 'block';document.getElementById('result').style.display = 'none';}">Photos</a></li>
+        <li ><a href="#map" onclick="{document.getElementById('map').style.display = 'block';document.getElementById('info').style.display = 'none';document.getElementById('photo').style.display = 'none';}">Map</a></li>
+        <li ><a href="#info" onclick="{document.getElementById('info').style.display = 'block';document.getElementById('map').style.display = 'none';document.getElementById('photo').style.display = 'none';}">Info</a></li>
+        <li ><a href="#photo" onclick="{document.getElementById('photo').style.display ='block';document.getElementById('map').style.display = 'none';document.getElementById('info').style.display = 'none';}">Photos</a></li>
         <li style="float:right"><a href="#about">Back To List</a></li>
     </ul><br/>
     <h2 align="center">Place Name</h2>
+</div>
+
+
+<!-- Map -->
+<div id="map" class="divided">
+    <section class="wrapper style1 align-center" id="reference">
+        <div class="inner">
+            <div class="index align-left">
+                <section>
+                    <div class="content">
+
+                        <form method="post" action="#">
+                            <div class="field half first">
+                                <label for="from">From</label>
+                                <input type="text" name="from" id="from" value="" />
+                            </div>
+
+
+                            <div class="field half first">
+                                <label for="to">To</label>
+                                <input type="text" name="to" id="to" value="" />
+                            </div>
+
+                            <ul class="actions" align="center">
+                                <li><input type="submit" name="Driving" id="Driving" value="Driving" /></li>
+                                <li><input type="submit" name="Walking" id="Walking" value="Walking" /></li>
+                                <li><input type="submit" name="Bicycling" id="Bicycling" value="Bicycling" /></li>
+                                <li><input type="submit" name="Transit" id="Transit" value="Transit" /></li>
+                            </ul>
+                        </form>
+
+                        <div>
+                            <!-- Google Map -->
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
 </div>
 
 
@@ -108,8 +154,8 @@
 </div>
 
 
-<!-- map -->
-<div id="wrapper" class="divided">
+<!-- photo -->
+<div id="photo" class="divided">
     <section class="wrapper style1 align-center">
         <div class="inner">
             <h2>Photo</h2>
@@ -118,10 +164,6 @@
 
         <!-- Gallery -->
         <div class="gallery style2 medium lightbox onscroll-fade-in">
-
-
-
-
             <article>
                 <a href="images/gallery/fulls/01.jpg" class="image">
                     <img src="images/gallery/thumbs/01.jpg" alt="" />
@@ -182,16 +224,18 @@
                     </ul>
                 </div>
             </article>
-
-
-
         </div>
-
     </section>
-
-
-
 </div>
+
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
 
 
