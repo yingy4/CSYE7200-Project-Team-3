@@ -1,0 +1,15 @@
+language: scala
+scala:
+  - 2.11.12
+jdk:
+  - oraclejdk8
+
+script:
+  - pwd
+  - cd CSYE7200-Project-Team-3
+
+notifications:
+  email:
+    - Zhou.yiy@husky.neu.edu
+    - Li.yang5@husky.neu.edu
+    - Liu.zheng4@husky.neu.edu
