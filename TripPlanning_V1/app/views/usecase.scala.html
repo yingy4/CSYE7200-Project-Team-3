@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+@()
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -6,26 +6,31 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+
+
         <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/font-awesome.min.css")"  />
         <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/fontawesome-all.css")"  />
         <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/main.css")" />
 
-        <script  type="text/javascript">
-        window.onload=function(){
-            $('#usecase1').css('display','none');
-            $('#usecase2').css('display','none');
-            $('#otherLocation').attr('disabled',true);
-            $('#otherLocation2').attr('disabled',true);
-        }
+
+        <script type="text/javascript">
+                window.onload=function(){
+
+                    $('#usecase1').css('display','none');
+                    $('#usecase2').css('display','none');
+                    $('#otherLocation').attr('disabled',true);
+                    $('#otherLocation2').attr('disabled',true);
+                }
         </script>
 
 
-
     </head>
+
     <body>
             <!-- choose use case -->
         <section class="wrapper style1 align-center">
             <div class="inner">
+                <h1>I CHANGED</h1>
                 <h2>Choose a use case</h2>
                 <p>This is an <strong>Items</strong> element, and it's basically just a grid for organizing items of various types. You can customize its <span class="demo-controls">appearance with a number of modifiers</span>, as well as assign it an optional <code>onload</code> or <code>onscroll</code> transition modifier (<a href="#reference-items">details</a>).</p>
                 <div class="items style1 medium onscroll-fade-in">
@@ -156,12 +161,13 @@
         </div>
 
             <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/jquery.min.js")" ></script>
+        <script src="@routes.Assets.versioned("javascripts/jquery.scrollex.min.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/jquery.scrolly.min.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/skel.min.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/util.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+
 
 
     </body>

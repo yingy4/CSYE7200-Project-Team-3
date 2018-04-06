@@ -8,6 +8,6 @@ import play.api.mvc.{AbstractController, ControllerComponents}
 class UsecaseController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   //link: /usecase
-  def usecase = Action{Ok(views.html.usecase.render())}
+  def usecase = Action{Ok(views.html.usecase())}
 
 }
