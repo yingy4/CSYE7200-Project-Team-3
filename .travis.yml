@@ -6,11 +6,8 @@ jdk:
 
 script:
   - pwd
-<<<<<<< HEAD
   - ls -a
-=======
-  - cd CSYE7200-Project-Team-3
->>>>>>> master
+
 
 notifications:
   email:
