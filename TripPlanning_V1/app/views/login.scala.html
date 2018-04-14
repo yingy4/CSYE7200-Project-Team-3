@@ -1,3 +1,4 @@
+@(loginForm: Form[Login])(implicit message:Messages)
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,34 +22,30 @@
                             </header>
 
                             <div class="content">
-                                <form method="post" action="/usecase">
-                                    <div class="field half first">
-                                        <label for="name">Name</label>
-                                        <input type="text" name="name" id="name" value="" />
-                                        <label>error message</label>
-                                    </div>
+                            @import helper._
+                            @helper.form(routes.UserController.formsPost_login){
+                                <div class="field">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="@{loginForm("name").label}" id="@{loginForm("name").id}" value="@{loginForm("name").value}" />
+                                    <label>@for(error <- loginForm.error("name")){<p style="color: red">@error.format</p>}</label>
+                                </div>
 
-                                    <div class="hidden">
-                                        <div class="field half first">
-                                            <label for="name">Name</label>
-                                            <input type="text" name="name" id="name" value="" />
-                                            <label>error message</label>
-                                        </div>
-                                    </div>
 
-                                    <div class="field half first">
-                                        <label for="password">Password</label>
-                                        <input type="password" name="password" id="password" value="" />
-                                        <label>error message</label>
-                                    </div>
+                                <div class="field">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="@{loginForm("password").label}" id="@{loginForm("password").id}" value="@{loginForm("password").value}" />
+                                    <label>@for(error <- loginForm.error("password")){<p style="color: red">@error.format</p>}</label>
+                                </div>
 
-                                    <ul class="actions">
-                                        <li></li>
-                                        <li><input type="submit" name="submit" id="submit" value="Login" /></li>
-                                    </ul>
-                                </form>
+                                @for(error <- loginForm.globalErrors){<p style="color: red">@error.format</p>}
 
+                                <ul class="actions">
+                                    <li></li>
+                                    <li><input type="submit" name="submit" id="submit" value="Login" /></li>
+                                </ul>
+                            }
                             </div>
+
                         </section>
                     </div>
                 </div>

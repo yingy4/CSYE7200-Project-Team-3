@@ -18,7 +18,7 @@
     </header>
     <div class="content">
 
-        <form method="post" action="#">
+        <form method="post" action="#" onsubmit="toVaild()">
             <div class="field half first">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="" />
@@ -37,8 +37,8 @@
                 <label>error message</label>
             </div>
             <div class="field half first">
-                <label for="password1">Confirm Password</label>
-                <input type="password" name="password1" id="password1" value="" />
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="confirmPassword" name="confirmPassword" id="confirmPassword" value="" />
                 <label>error message</label>
             </div>
             <div class="field half first">
@@ -57,5 +57,30 @@
         </div>
     </section>
 </div>
+
+
 </body>
+
+<script type="text/javascript">
+    function toVaild(){
+
+
+        var human = document.getElementById("human").value;
+        var password = doucment.getElementById("password").value;
+        var confirmPassword = doucment.getElementById("confirmPassword").value;
+
+        alert("password:"+password);
+
+
+        if(password==confirmPassword){
+            alert("same");
+            return true;
+        }
+        else{
+            alert("password not same")
+            return false;
+        }
+    }
+
+</script>
 </html>
