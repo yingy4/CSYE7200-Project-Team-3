@@ -14,6 +14,8 @@ case class User (id: Option[Long] = None,
                  name: String,
                  password: String,
                  email:String)
+
+
 case class Login(name:String,password:String)
 
 object User {
