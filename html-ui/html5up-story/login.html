@@ -9,6 +9,33 @@
     <style>
         .hidden{visibility: hidden;}
     </style>
+
+
+
+
+
+
+    <script>
+        window.onload =function(){
+            document.getElementById("alert1").hidden;
+            document.getElementById("alert2").hidden;
+
+        }
+        function checkname() {
+            var name=document.getElementById("name");
+
+            if(name.value==""){
+               var alert=document.getElementById(alert1)
+               alert.innerText("plese")
+                alert.innerHTML
+            }
+        }
+        function checkpassword(){
+            var password=document.getElementById("password")
+            password.hidden(false)
+
+        }
+    </script>
 </head>
 <body>
 <div id="wrapper" class="divided">
@@ -25,7 +52,7 @@
                             <div class="field half first">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" id="name" value="" />
-                                <label>error message</label>
+                                <label id="alert1">error message</label>
                             </div>
 
                             <div class="hidden">
@@ -44,7 +71,7 @@
 
                             <ul class="actions">
                                 <li></li>
-                                <li><input type="submit" name="submit" id="submit" value="Login" /></li>
+                                <li><input type="submit" name="submit" id="submit" value="Login" onclick="checkname()"/></li>
                             </ul>
                         </form>
 
