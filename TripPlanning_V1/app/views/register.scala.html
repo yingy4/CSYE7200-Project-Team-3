@@ -1,0 +1,93 @@
+@(registerForm: Form[User])(implicit message:Messages)
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rigester</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/main.css")" />
+        <script type="text/javascript">
+
+    function OnInput (event) {
+        if(event.target.value == document.getElementById("password").value){
+            document.getElementById("password_error").innerText = "OK"
+        }else{
+            document.getElementById("password_error").innerText = "TWO PASSWORD NOT SAME"
+        }
+    }
+    // Internet Explorer
+    function OnPropChanged (event) {
+        if (event.propertyName.toLowerCase () == "value") {
+
+            if(event.srcElement.value == document.getElementById("password").value){
+                document.getElementById("password_error").innerText = "OK"
+            }else{
+                document.getElementById("password_error").innerText = "TWO PASSWORD NOT SAME"
+            }
+        }
+    }
+    </script>
+    </head>
+    <body>
+        <div id="wrapper" class="divided">
+            <section class="wrapper style1 align-center" id="reference">
+                <div class="inner">
+                    <div class="index align-left">
+                        <section>
+                            <header>
+                                <h2>Register</h2>
+                            </header>
+                            <div class="content">
+
+                                @import helper._
+                                @helper.form(routes.UserController.formsPost_register){
+
+                                    <div class="field half first">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="@{registerForm("name").label}" id="@{registerForm("name").id}" value="@{registerForm("name").value}" />
+                                        <label>@for(error <- registerForm.error("name")){<p style="color: red">@error.format</p>}</label>
+                                    </div>
+
+                                    <div class="field half first">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="@{registerForm("email").label}" id="@{registerForm("email").id}" value="@{registerForm("email").value}" />
+                                        <label>@for(error <- registerForm.error("email")){<p style="color: red">@error.format</p>}</label>
+                                    </div>
+
+                                    <div class="field half first">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="@{registerForm("password").label}" id="@{registerForm("password").id}" value="@{registerForm("password").value}" />
+                                        <label>@for(error <- registerForm.error("password")){<p style="color: red">@error.format</p>}</label>
+                                    </div>
+
+                                    <div class="field half first">
+                                        <label for="confirmPassword">Password</label>
+                                        <input type="password" name="@{registerForm("confirmPassword").label}" id="@{registerForm("confirmPassword").id}" value="@{registerForm("confirmPassword").value}" oninput="OnInput (event)" onpropertychange="OnPropChanged (event)"/>
+                                        <label ><p style="color: red" id="password_error"></p></label>
+                                    </div>
+
+                                    <div class="field half first">
+                                       <input type="checkbox" id="@{registerForm("test").id}" name="@{registerForm("test").label}"  />
+                                       <label for="test">I am a human and not a robot</label>
+                                        <label>@for(error <- registerForm.error("test")){<p style="color: red">@error.format</p>}</label>
+                                    </div>
+
+
+                                    @for(error <- registerForm.globalErrors){<p style="color: red">@error.format</p>}
+
+                                    <ul class="actions">
+                                        <li></li>
+                                        <li><input type="submit" name="submit" id="submit" value="Register" /></li>
+                                    </ul>
+
+
+                                }
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

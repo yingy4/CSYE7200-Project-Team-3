@@ -1,0 +1,196 @@
+@(user:String, searchForm_case1: Form[SearchForm_case1],searchForm_case2: Form[SearchForm_case2], show:String)(implicit message:Messages)
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>use case</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+        <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/font-awesome.min.css")"  />
+        <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/fontawesome-all.css")"  />
+        <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/main.css")" />
+
+
+        <script type="text/javascript">
+                window.onload=function(){
+                    if(@show.equals("")){
+                        $('#usecase1').css('display','none');
+                        $('#usecase2').css('display','none');
+                    }
+                    if(@show.equals("usecase1_form")){
+                        $('#usecase2').css('display','none');
+                        self.location.href='#usecase1';
+                    }
+                    if(@show.equals("usecase2_form")){
+                        $('#usecase1').css('display','none');
+                        self.location.href='#usecase2';
+                    }
+                }
+                autoComplete_case1 = function(){
+                    var input = document.getElementById('otherLocation_case1');
+                    autocomplete = new google.maps.places.Autocomplete(input);
+                }
+                autoComplete_case2 = function(){
+                    var input = document.getElementById('otherLocation_case2');
+                    autocomplete = new google.maps.places.Autocomplete(input);
+                }
+                autoComplete_keyword_case2 = function(){
+                    var input = document.getElementById('keyword_case2');
+                    autocomplete = new google.maps.places.Autocomplete(input);
+                }
+        </script>
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3e4H1xcvtu3cwsB4iOQ9inDpH9zOVIjQ&libraries=places"></script>
+
+
+    </head>
+
+    <body>
+            <!-- choose use case -->
+        <section class="wrapper style1 align-center">
+            <div class="inner">
+                <h1>Hello,@user</h1>
+                <h2>Choose a use case</h2>
+                <p>This is an <strong>Items</strong> element, and it's basically just a grid for organizing items of various types. You can customize its <span class="demo-controls">appearance with a number of modifiers</span>, as well as assign it an optional <code>onload</code> or <code>onscroll</code> transition modifier (<a href="#reference-items">details</a>).</p>
+                <div class="items style1 medium onscroll-fade-in">
+                    <section>
+                        <a href="#usecase1"><span class="icon style2 major fa-diamond" style="cursor:pointer" id="span1" onclick="{$('#usecase1').css('display','block');$('#usecase2').css('display','none');}"></span></a>
+                        <h3>one</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dui turpis, cursus eget orci amet aliquam congue semper. Etiam eget ultrices risus nec tempor elit.</p>
+                    </section>
+                    <section>
+                        <a href="#usecase2"><span class="icon style2 major fa-paper-plane" style="cursor:pointer" id="span2" onclick="{$('#usecase1').css('display','none');$('#usecase2').css('display','block');}"></span></a>
+                        <h3>Two</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dui turpis, cursus eget orci amet aliquam congue semper. Etiam eget ultrices risus nec tempor elit.</p>
+                    </section>
+
+                </div>
+            </div>
+        </section>
+
+            <!-- choose use case one -->
+        <div id="usecase1" class="divided">
+            <section class="wrapper style1 align-center">
+                <div class="inner">
+                    <h2>Use case one title</h2>
+                    <p>Finally, here are some additional elements you <em>might</em> find useful (and yup, they look fine with any <span class="demo-controls">appearance</span>).</p>
+                    <div class="index align-left">
+                        <section>
+                            <header>
+                                <h3>First Use Case</h3>
+                            </header>
+                            <div class="content">
+
+                                    @import helper._
+                                    @helper.form(routes.UsecaseController.formsPost_case1){
+                                        <div class="field">
+                                            <label for="keyword">Keyword</label>
+                                            <input type="text"  id="@{searchForm_case1("keyword").id}"  name="@{searchForm_case1("keyword").label}" value="@{searchForm_case1("keyword").value}" onFocus="autoComplete_case1()"/>
+                                        </div>
+                                        @for(error <- searchForm_case1.error("keyword")){<p style="color: red">@error.format</p>}
+
+
+                                        <div class="field">
+                                            <label for="travelModel">Travel Mode</label>
+                                            <div class="select-wrapper">
+                                                <select name="@{searchForm_case1("travelModel").label}" id="@{searchForm_case1("travelModel").id}">
+                                                        <!-- default by car -->
+                                                    <option value="driving">- Default -</option>
+                                                    <option value="driving">Driving</option>
+                                                    <option value="walking">Walking</option>
+                                                    <option value="bicycling">Bicycling</option>
+                                                    <option value="transit">Transit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        @for(error <- searchForm_case1.error("travelModel")){<p style="color: red">@error.format</p>}
+
+                                        <div class="field">
+                                            <label for="time">Arriving Within(minutes)</label>
+                                            <input type="text"  id="@{searchForm_case1("time").id}"  name="@{searchForm_case1("time").label}" value="@{searchForm_case1("time").value}"/>
+                                        </div>
+                                        @for(error <- searchForm_case1.error("time")){<p style="color: red">@error.format</p>}
+
+                                        @inputRadioGroup(
+                                            searchForm_case1("currentLocation1"),
+                                            options = Seq("currentLocation"->"Current Location","otherLocation"->"Other. Please specify:"),
+                                            '_label -> "From",
+                                            '_showConstraints -> false
+                                        )
+
+                                        <div class="field">
+                                            <input type="text" id="otherLocation_case1"  name="@{searchForm_case2("otherLocation1").label}" value="@{searchForm_case2("otherLocation1").value}"/>
+                                        </div>
+                                        @for(error <- searchForm_case1.globalErrors){<p style="color: red">@error.format</p>}
+                                        <script>autoComplete_case1()</script>
+
+                                        <button type="submit">Search</button>
+                                    }
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+            <!-- choose use case two -->
+        <div id="usecase2" class="divided">
+            <section class="wrapper style1 align-center">
+                <div class="inner">
+                    <h2>Use case two title</h2>
+                    <p>Finally, here are some additional elements you <em>might</em> find useful (and yup, they look fine with any <span class="demo-controls">appearance</span>).</p>
+                    <div class="index align-left">
+                        <section>
+                            <header>
+                                <h3>Second Use Case</h3>
+                            </header>
+                            <div class="content">
+                                @import helper._
+                                @helper.form(routes.UsecaseController.formsPost_case2) {
+                                    <div class="field">
+                                        <label for="keyword2">Keyword</label>
+                                        <input type="text"  id="keyword_case2"  name="@{searchForm_case2("keyword").label}" value="@{searchForm_case2("keyword").value}" onFocus="autoComplete()"/>
+                                    </div>
+                                    @for(error <- searchForm_case2.error("keyword")){<p style="color: red">@error.format</p>}
+
+                                    <script>autoComplete_keyword_case2()</script>
+
+                                    @inputRadioGroup(
+                                        searchForm_case2("currentLocation2"),
+                                        options = Seq("currentLocation"->"Current Location","otherLocation"->"Other. Please specify:"),
+                                        '_label -> "From",
+                                        '_showConstraints -> false
+                                    )
+
+                                    <div class="field">
+                                        <input type="text" id="otherLocation_case2"  name="@{searchForm_case2("otherLocation2").label}" value="@{searchForm_case2("otherLocation2").value}"/>
+                                    </div>
+                                    @for(error <- searchForm_case2.globalErrors){<p style="color: red">@error.format</p>}
+                                    <button type="submit">Search</button>
+
+                                    <script>autoComplete_case2()</script>
+                                }
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+            <!-- Scripts -->
+        <script src="@routes.Assets.versioned("javascripts/jquery.min.js")" ></script>
+        <script src="@routes.Assets.versioned("javascripts/jquery.scrollex.min.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/jquery.scrolly.min.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/skel.min.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/util.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+
+
+
+
+    </body>
+</html>

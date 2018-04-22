@@ -10,4 +10,4 @@ Yang Li: <Li.yang5@husky.neu.edu>
 Zheng Liu: <Liu.zheng4@husky.neu.edu>  
 
 #### TravisCI Build  
-https://travis-ci.org/chesszhou/CSYE7200-Project-Team-3.svg?branch=master
+https://travis-ci.org/chesszhou/CSYE7200-Project-Team-3

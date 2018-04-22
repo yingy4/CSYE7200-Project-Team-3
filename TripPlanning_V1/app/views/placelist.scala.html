@@ -1,0 +1,399 @@
+@(places: Array[Place],keyword:String, currentLocation:String)
+
+<html lang="en">
+<head>
+    <title>place list</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="@routes.Assets.versioned("stylesheets/font-awesome.min.css")"  rel="stylesheet">
+    <link href="@routes.Assets.versioned("stylesheets/fontawesome-all.css")"  rel="stylesheet">
+    <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/main.css")" />
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3e4H1xcvtu3cwsB4iOQ9inDpH9zOVIjQ&libraries=places"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <style>
+
+        #centeredmenu ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        #centeredmenu li {
+            float: left;
+        }
+
+        #centeredmenu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        #testmap {
+            height: 400px;
+            width: 100%;
+        }
+
+        /*鼠标移动到选项上修改背景颜色 */
+        #centeredmenu  li a:hover {
+            background-color: #111;
+        }
+
+        td.width1{
+            width:100px;
+        }
+        td.width2{
+            width:400px;
+        }
+        td.width3{
+            width:900px;
+        }
+
+    </style>
+
+        <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+    <style type="text/css">
+            table{
+                font-family: verdana,arial,sans-serif;
+                font-size:13px;
+                color:#333333;
+                border-width: 1px;
+                border-color: #666666;
+                border-collapse: collapse;
+                align-items: center;
+            }
+            table th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #dedede;
+            }
+            table td {
+                text-align:center;
+                vertical-align:middle;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #ffffff;
+            }
+    </style>
+
+
+    <script  type="text/javascript">
+        window.onload=function(){
+            document.getElementById("result").style.display = "block";
+            document.getElementById("fav").style.display = "none";
+        };
+    </script>
+
+
+
+</head>
+<body >
+
+
+
+<div id="centeredmenu">
+    <ul id="1">
+        <li id="2"><a href="#result" onclick="{document.getElementById('result').style.display = 'block';document.getElementById('fav').style.display = 'none';}">Result</a></li>
+        <li id="3"><a href="#fav" onclick="{document.getElementById('fav').style.display = 'block';document.getElementById('result').style.display = 'none';}">Favoriates</a></li>
+        <li id="4" style="float:right"><a href="/usecase">Back</a></li>
+    </ul>
+</div>
+
+
+    <div id="testmap"></div>
+
+
+<div id="result" class="divided">
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2>Result</h2>
+                <!-- Table -->
+            <section>
+                <div class="content" align="center">
+                    <div class="table-wrapper">
+                        <table  id="searchTable">
+                            <thead>
+                            <tr>
+                                <td width=150px><b>#</b></td>
+                                <td width=150px><b>Category</b></td>
+                                <td width=300px><b>Name</b></td>
+                                <td width=800px><b>Address</b></td>
+                                <td width=150px><b>Favoriate</b></td>
+                                <td width=150px><b>Detail</b></td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+</div>
+
+
+<div id="fav" class="divided">
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2>Fav</h2>
+            <!-- Table -->
+            <section>
+                <div class="content">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name2</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Item 1</td>
+                                <td>Ante turpis integer aliquet porttitor.</td>
+                                <td>29.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 2</td>
+                                <td>Vis ac commodo adipiscing arcu aliquet.</td>
+                                <td>19.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 3</td>
+                                <td> Morbi faucibus arcu accumsan lorem.</td>
+                                <td>29.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 4</td>
+                                <td>Vitae integer tempus condimentum.</td>
+                                <td>19.99</td>
+                            </tr>
+                            <tr>
+                                <td>Item 5</td>
+                                <td>Ante turpis integer aliquet porttitor.</td>
+                                <td>29.99</td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+</div>
+
+    <script>
+            //get nearby keyword location
+            var map;
+            var service;
+
+            getNearLocation = function(lat,lon) {
+                var pyrmont = new google.maps.LatLng(lat,lon);
+                map = new google.maps.Map(document.getElementById('testmap'), {
+                    center:pyrmont,
+                    zoom: 13
+                });
+
+                var request = {
+                    location: pyrmont,
+                    radius: '500',
+                    query: '@keyword'
+                };
+
+
+                //service = new google.maps.places.PlacesService(map);
+                //service.textSearch(request, callback);
+            }
+
+
+            addMarker = function(){
+                var length = @places.length;
+                var marker_info = 1
+                @for(i<- (0 until places.length)){
+                    var marker = new google.maps.Marker({
+                        position:@places(i).location,
+                        map:map,
+                    });
+
+                    /**
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: marker_info
+                    });
+                    marker.addListener('click',function(){
+                        infoWindow.open(map,marker);
+                    })
+
+                   **/
+                }
+            }
+
+
+            /**
+            addMarker_1 = function(place,i){
+                var marker = new google.maps.Marker({
+                    position:place.geometry.location,
+                    map:map
+                });
+                //check for content
+                if(place.name){
+                    var infoWindow = new google.maps.InfoWindow({
+                        content:i+"."+place.name
+                    });
+                    marker.addListener('click',function(){
+                        infoWindow.open(map,marker);
+                    })
+                }
+            }**/
+
+            /**
+            function callback(results, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        var place = results[i];
+                        console.log(place);
+                        addMarker_1( results[i],i);
+                        addToList_1(results[i],i);
+
+                    }
+                }
+            }**/
+
+            getCategoryIcon = function(keyword){
+                if(keyword=="restaurant"){
+                    return "<i class=\"icon fa fa-cutlery\"></i>";
+                }else if(keyword == "zoo"){
+                    return "<i class=\"icon fas fa-paw\"></i>";
+                }else if(keyword == "travel_agency"){
+                    return "<i class=\"icon fas fa-suitcase\"></i>";
+                }else if(keyword == "transit_station"){
+                    return "<i class=\"icon fas fa-exchange\"></i>";
+                }else if(keyword == "train_station"){
+                    return "<i class=\"icon fas fa-train\"></i>";
+                }else if(keyword == "taxi_stand"){
+                    return "<i class=\"icon fas fa-taxi\"></i>";
+                }else if(keyword == "subway_station"){
+                    return "<i class=\"icon fas fa-subway\"></i>";
+                }else if(keyword == "stadium"){
+                    return "<i class=\"icon fas fa-soccer-ball-o\"></i>";
+                }else if(keyword == "shopping_mall"){
+                    return "<i class=\"icon fas fa-shopping-bag\"></i>";
+                }else if(keyword == "parking"){
+                    return "<i class=\"icon fas fa-product-hunt\"></i>";
+                }else if(keyword == "park"){
+                    return "<i class=\"icon fas fa-tree\"></i>";
+                }else if(keyword == "night_club"){
+                    return "<i class=\"icon fas fa-glass\"></i>";
+                }else if(keyword == "art_gallery"){
+                    return "<i class=\"icon fas fa-image\"></i>";
+                }else if(keyword == "movie_theater"){
+                    return "<i class=\"icon fas fa-film\"></i>";
+                }else if(keyword == "casino"){
+                    return "<i class=\"icon fas fa-money\"></i>";
+                }else if(keyword == "bank"){
+                    return "<i class=\"icon fas fa-bank\"></i>";
+                }else if(keyword == "airport"){
+                    return "<i class=\"icon fas fa-plane\"></i>";
+                }else if(keyword == "amusement_park"){
+                    return "<i class=\"icon fab fa-child\"></i>";
+                }else if(keyword == "supermarket"){
+                    return "<i class=\"icon fas fa-shopping-cart\"></i>";
+                }else if(keyword == "hospital"){
+                    return "<i class=\"icon fas fa-hospital-o\"></i>";
+                }else if(keyword == "aquarium"){
+                    return "<i class=\"icon fas fa-linux\"></i>";
+                }else if(keyword == "cafe"){
+                    return "<i class=\"icon fas fa-coffee\"></i>";
+                }else if(keyword == "bus_station"){
+                    return "<i class=\"icon fas fa-bus\"></i>";
+                }else if(keyword == "university"){
+                    return "<i class=\"icon fas fa-graduation-cap\"></i>";
+                }else if(keyword == "bakery"){
+                    return "<i class=\"icon fas fa-birthday-cake\"></i>";
+                }else if(keyword == "hotel"){
+                    return "<i class=\"icon fas fa-hotel\"></i>";
+                }{//default pin
+                    return "<i class=\"icon fa fa-map-pin\"></i>";
+                }
+            }
+
+
+
+            addToList = function(){
+                var lat = @currentLocation.split(",")(0)
+                var lon = @currentLocation.split(",")(1)
+
+                var table = document.getElementById("searchTable");
+
+                @for(i<- (0 until places.length)){
+                var id = '@places(i).id';
+                var location = '@places(i).location';
+                var category = '@places(i).category';
+                var name = '@places(i).name';
+                var address = '@places(i).address';
+                var icon = getCategoryIcon(category);
+                var code = "<tr>" +
+                        "<td class=\"width1\">" + (@i + 1) + "</td>" +
+                        "<td class=\"width1\">" + icon + "</td>" +
+                        "<td class=\"width2\">" + name + "</td>" +
+                        "<td class=\"width3\">" + address + "</td>" +
+                        "<td class=\"width1\">" + "<a href='/addToFav?id="+id+ "&category=" + category+'&name=' + name +'&address=' + address +'&loaction=' + location+" '><i class='icon fa fa-star-o'></i></a>" + "</td>" +
+                        "<td class=\"width1\">" + "<a href='/placedeatil?id=" + id + "&location=" + location + '&lat=' + lat + '&lon=' + lon + "'><i class='icon fa fa-chevron-circle-right'></i></a>" + "</td>" +
+                        "</tr>";
+                table.innerHTML += code;
+                }
+            }
+
+            /**
+            function addToList_1(place,i){
+                var lat = @currentLocation.split(",")(0)
+                var lon = @currentLocation.split(",")(1)
+                var table = document.getElementById("searchTable");
+                console.log("lat:"+lat);
+                console.log("lon:"+lon);
+                var code = "<tr>" +
+                        "<td class=\"width1\">"+(i+1)+"</td>" +
+                        "<td class=\"width1\">"+getCategoryIcon(place.types[0])+"</td>" +
+                        "<td class=\"width2\">"+place.name+"</td>" +
+                        "<td class=\"width3\">"+place.formatted_address+"</td>" +
+                        "<td class=\"width1\">"+"<a href=''><i class='icon fa fa-star-o'></i></a>"+"</td>" +
+                        "<td class=\"width1\">"+"<a href='/placedeatil?id="+place.place_id+"&location="+place.geometry.location.toString()+"&lat="+lat+"&lon="+lon+"'><i class='icon fa fa-chevron-circle-right'></i></a>"+"</td>" +
+                        "</tr>";
+                table.innerHTML += code;
+            }**/
+
+
+
+            var lat = @currentLocation.split(",")(0)
+            var lon = @currentLocation.split(",")(1)
+            getNearLocation(lat,lon)
+            addMarker();
+            addToList();
+    </script>
+
+
+
+
+
+
+</body>
+</html>

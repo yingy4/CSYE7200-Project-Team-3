@@ -1,0 +1,55 @@
+@(loginForm: Form[Login])(implicit message:Messages)
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet"  href="@routes.Assets.versioned("stylesheets/main.css")" />
+        <style>
+        .hidden{visibility: hidden;}
+    </style>
+    </head>
+    <body>
+        <div id="wrapper" class="divided">
+            <section class="wrapper style1 align-center" id="reference">
+                <div class="inner">
+                    <div class="index align-left">
+                        <section>
+                            <header>
+                                <h2>Login</h2>
+                            </header>
+
+                            <div class="content">
+                            @import helper._
+                            @helper.form(routes.UserController.formsPost_login){
+                                <div class="field">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="@{loginForm("name").label}" id="@{loginForm("name").id}" value="@{loginForm("name").value}" />
+                                    <label>@for(error <- loginForm.error("name")){<p style="color: red">@error.format</p>}</label>
+                                </div>
+
+
+                                <div class="field">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="@{loginForm("password").label}" id="@{loginForm("password").id}" value="@{loginForm("password").value}" />
+                                    <label>@for(error <- loginForm.error("password")){<p style="color: red">@error.format</p>}</label>
+                                </div>
+
+                                @for(error <- loginForm.globalErrors){<p style="color: red">@error.format</p>}
+
+                                <ul class="actions">
+                                    <li></li>
+                                    <li><input type="submit" name="submit" id="submit" value="Login" /></li>
+                                </ul>
+                            }
+                            </div>
+
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
