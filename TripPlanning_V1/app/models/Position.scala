@@ -2,7 +2,6 @@ package models
 
 case class Position(lat: Double, lon: Double)
 
-
 import spray.json._
 
 

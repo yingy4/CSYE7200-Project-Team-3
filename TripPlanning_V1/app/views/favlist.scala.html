@@ -29,10 +29,6 @@
                     padding: 14px 16px;
                     text-decoration: none;
                 }
-                #testmap {
-                    height: 400px;
-                    width: 100%;
-                }
                 /*鼠标移动到选项上修改背景颜色 */
                 #centeredmenu  li a:hover {
                     background-color: #111;
@@ -74,27 +70,20 @@
                     background-color: #ffffff;
                 }
         </style>
-        <script  type="text/javascript">
-                window.onload=function(){
-                    document.getElementById("result").style.display = "block";
-                    document.getElementById("fav").style.display = "none";
-                };
-        </script>
     </head>
     <body >
         <div id="centeredmenu">
             <ul id="1">
-                <li id="2"><a href="#result" onclick="{document.getElementById('result').style.display = 'block';document.getElementById('fav').style.display = 'none';}">Result</a></li>
-                <li id="3"><a href="/myFav" onclick="{document.getElementById('fav').style.display = 'block';document.getElementById('result').style.display = 'none';}">Favoriates</a></li>
+                <li id="2"><a href="/usecase">Search For Result</a></li>
+                <li id="3"><a href="/myFav">Favoriates</a></li>
                 <li id="5" style="float:right"><a href="/logout">Log out</a></li>
                 <li id="4" style="float:right"><a href="/usecase">Back</a></li>
             </ul>
         </div>
-        <div id="testmap"></div>
         <div id="result" class="divided">
             <section class="wrapper style1 align-center">
                 <div class="inner">
-                    <h2>Result</h2>
+                    <h2>My Favoriate Place</h2>
                         <!-- Table -->
                     <section>
                         <div class="content" align="center">
@@ -106,8 +95,7 @@
                                             <td width=150px><b>Category</b></td>
                                             <td width=300px><b>Name</b></td>
                                             <td width=800px><b>Address</b></td>
-                                            <td width=150px><b>Favoriate</b></td>
-                                            <td width=150px><b>Detail</b></td>
+                                            <td width=150px><b>Remove </b></td>
                                             <td width=150px><b>Email me</b></td>
                                         </tr>
                                     </thead>
@@ -120,119 +108,7 @@
                 </div>
             </section>
         </div>
-        <div id="fav" class="divided">
-            <section class="wrapper style1 align-center">
-                <div class="inner">
-                    <h2>Fav</h2>
-                        <!-- Table -->
-                    <section>
-                        <div class="content">
-                            <div class="table-wrapper">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name2</th>
-                                            <th>Description</th>
-                                            <th>Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Item 1</td>
-                                            <td>Ante turpis integer aliquet porttitor.</td>
-                                            <td>29.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Item 2</td>
-                                            <td>Vis ac commodo adipiscing arcu aliquet.</td>
-                                            <td>19.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Item 3</td>
-                                            <td> Morbi faucibus arcu accumsan lorem.</td>
-                                            <td>29.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Item 4</td>
-                                            <td>Vitae integer tempus condimentum.</td>
-                                            <td>19.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Item 5</td>
-                                            <td>Ante turpis integer aliquet porttitor.</td>
-                                            <td>29.99</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </section>
-        </div>
         <script>
-                //get nearby keyword location
-                var map;
-                var service;
-                getNearLocation = function(lat,lon) {
-                    var pyrmont = new google.maps.LatLng(lat,lon);
-                    map = new google.maps.Map(document.getElementById('testmap'), {
-                        center:pyrmont,
-                        zoom: 13
-                    });
-                    var request = {
-                        location: pyrmont,
-                        radius: '500',
-                        query: '@keyword'
-                    };
-                    //service = new google.maps.places.PlacesService(map);
-                    //service.textSearch(request, callback);
-                }
-                addMarker = function(){
-                    var length = @places.length;
-                    var marker_info = 1
-                    @for(i<- (0 until places.length)){
-                    var marker = new google.maps.Marker({
-                        position:@places(i).location,
-                        map:map,
-                    });
-                    /**
-                     var infoWindow = new google.maps.InfoWindow({
-                        content: marker_info
-                    });
-                     marker.addListener('click',function(){
-                        infoWindow.open(map,marker);
-                    })
-                     **/
-                    }
-                }
-                /**
-                 addMarker_1 = function(place,i){
-                var marker = new google.maps.Marker({
-                    position:place.geometry.location,
-                    map:map
-                });
-                //check for content
-                if(place.name){
-                    var infoWindow = new google.maps.InfoWindow({
-                        content:i+"."+place.name
-                    });
-                    marker.addListener('click',function(){
-                        infoWindow.open(map,marker);
-                    })
-                }
-            }**/
-                /**
-                 function callback(results, status) {
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    for (var i = 0; i < results.length; i++) {
-                        var place = results[i];
-                        console.log(place);
-                        addMarker_1( results[i],i);
-                        addToList_1(results[i],i);
-                    }
-                }
-            }**/
                 getCategoryIcon = function(keyword){
                     if(keyword=="restaurant"){
                         return "<i class=\"icon fa fa-cutlery\"></i>";
@@ -306,34 +182,12 @@
                             "<td class=\"width1\">" + icon + "</td>" +
                             "<td class=\"width2\">" + name + "</td>" +
                             "<td class=\"width3\">" + address + "</td>" +
-                            "<td class=\"width1\">" + "<a href='/addToFav?id="+id+ " '><i class='icon fa fa-star-o'></i></a>" + "</td>" +
-                            "<td class=\"width1\">" + "<a href='/placedeatil?id=" + id + "&location=" + location + '&lat=' + lat + '&lon=' + lon + "'><i class='icon fa fa-chevron-circle-right'></i></a>" + "</td>" +
+                            "<td class=\"width1\">" + "<a href='/removeFromFav?id="+id+ " '><i class='icon fas fa-eraser'></i></a>" + "</td>" +
                             "<td class=\"width1\">" + "<a href='/sendToEmail?id=" + id + "'><i class='icon fas fa-envelope-square'></i></a>" + "</td>" +
                             "</tr>";
                     table.innerHTML += code;
                     }
                 }
-                /**
-                 function addToList_1(place,i){
-                var lat = @currentLocation.split(",")(0)
-                var lon = @currentLocation.split(",")(1)
-                var table = document.getElementById("searchTable");
-                console.log("lat:"+lat);
-                console.log("lon:"+lon);
-                var code = "<tr>" +
-                        "<td class=\"width1\">"+(i+1)+"</td>" +
-                        "<td class=\"width1\">"+getCategoryIcon(place.types[0])+"</td>" +
-                        "<td class=\"width2\">"+place.name+"</td>" +
-                        "<td class=\"width3\">"+place.formatted_address+"</td>" +
-                        "<td class=\"width1\">"+"<a href=''><i class='icon fa fa-star-o'></i></a>"+"</td>" +
-                        "<td class=\"width1\">"+"<a href='/placedeatil?id="+place.place_id+"&location="+place.geometry.location.toString()+"&lat="+lat+"&lon="+lon+"'><i class='icon fa fa-chevron-circle-right'></i></a>"+"</td>" +
-                        "</tr>";
-                table.innerHTML += code;
-            }**/
-                var lat = @currentLocation.split(",")(0)
-                var lon = @currentLocation.split(",")(1)
-                        getNearLocation(lat,lon)
-                addMarker();
                 addToList();
         </script>
     </body>

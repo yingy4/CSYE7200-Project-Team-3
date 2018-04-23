@@ -38,6 +38,10 @@ class UserController @Inject()(cc: ControllerComponents,
     Ok(views.html.login(userForm_login))
   }
 
+  def logout = Action{
+    Ok(views.html.home.render()).withNewSession
+  }
+
   //POST /login
   def formsPost_login() = Action{ implicit request =>
     userForm_login.bindFromRequest.fold(
