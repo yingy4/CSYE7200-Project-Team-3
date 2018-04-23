@@ -133,6 +133,23 @@ object Place{
     durations.toArray
   }
 
+  def getPlaceDetailById(id:String):Place = {
+    val url = "https://maps.googleapis.com/maps/api/place/details/json?" +
+      "placeid="+id+
+      "&key=AIzaSyD3e4H1xcvtu3cwsB4iOQ9inDpH9zOVIjQ"
+
+    val result = scala.io.Source.fromURL(url).mkString;
+
+    import play.api.libs.json._
+    val jsonResult: JsValue = Json.parse(result)
+
+    val name = removeQuotation((jsonResult \"result" \ "name").get.toString());
+    val address = removeQuotation((jsonResult \"result" \ "formatted_address").get.toString());
+    val category = removeQuotation((jsonResult \"result" \ "types" \ 0).get.toString());;
+
+    Place.apply(id,category,name,address,"fav","location");
+  }
+
 }
 
 

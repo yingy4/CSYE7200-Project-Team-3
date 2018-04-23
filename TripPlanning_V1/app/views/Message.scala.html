@@ -1,0 +1,23 @@
+@(Message:String, backLevel:Int)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+
+        @if(Message=="removeOk"){
+            <h1>Place has been removed from your favoriate list!</h1>
+            <p><a href= "/myFav">Click here go back to list</a></p>
+        }else{
+            <h1>@Message</h1>
+            @if(backLevel==1){
+                <p><a onclick="window.history.back()">Click here go back to list</a></p>
+            }
+        }
+    <p><a href="/usecase">Click here to go to the main page</a></p>
+
+    </body>
+</html>

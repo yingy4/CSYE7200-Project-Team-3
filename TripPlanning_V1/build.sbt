@@ -21,6 +21,16 @@ libraryDependencies ++= Seq(
 libraryDependencies += "com.typesafe.play" %% "play-ws" % "2.6.3"
 libraryDependencies += "io.spray" %%  "spray-json" % "1.3.3"
 
+libraryDependencies += "com.typesafe.play" %% "play-mailer" % "6.0.1"
+libraryDependencies += "com.typesafe.play" %% "play-mailer-guice" % "6.0.1"
+
 
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
 libraryDependencies += "org.playframework.anorm" %% "anorm" % "2.6.1"
+
+libraryDependencies += "org.scala-js" %% "scalajs-library" % "0.6.20"
+
+
+
+
+

@@ -4,10 +4,10 @@ import javax.inject.{Inject, Singleton}
 
 import models.Place
 import play.api.mvc.{AbstractController, ControllerComponents}
-
+import models.{Place, Position, UserRepository}
 
 @Singleton
-class UsecaseController @Inject()(cc: ControllerComponents) extends AbstractController(cc) with play.api.i18n.I18nSupport {
+class UsecaseController @Inject()(cc: ControllerComponents,userService: UserRepository) extends AbstractController(cc) with play.api.i18n.I18nSupport {
 
 
   //GET /usecase
@@ -20,6 +20,26 @@ class UsecaseController @Inject()(cc: ControllerComponents) extends AbstractCont
     }
 
   }
+
+  def myFav() = Action{implicit request =>
+    request.session.get("current_user").map { user =>
+      val userId = userService.getUserId(user);
+      val places = userService.getFavList(userId);
+
+      for(place<-places){
+        println(place.name)
+        println(place.category)
+        println(place.address)
+      }
+
+      val currentLocation = Position.getCurrentLocation
+      val currentLocationJson:String = currentLocation.lat + ","+currentLocation.lon;
+      Ok(views.html.favlist(places,"keyword", currentLocationJson))
+    }.getOrElse {
+      Unauthorized("Oops, you are not connected")
+    }
+  }
+
 
   //POST /usecase1_form
   //handel usecase1 requset, with form validation
