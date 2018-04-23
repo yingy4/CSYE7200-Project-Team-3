@@ -28,9 +28,11 @@ libraryDependencies += "com.typesafe.play" %% "play-mailer-guice" % "6.0.1"
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
 libraryDependencies += "org.playframework.anorm" %% "anorm" % "2.6.1"
 
+libraryDependencies ++= Seq(
+  "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % "test"
+)
+
 libraryDependencies += "org.scala-js" %% "scalajs-library" % "0.6.20"
-
-
 
 
 
