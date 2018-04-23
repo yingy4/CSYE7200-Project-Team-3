@@ -24,3 +24,7 @@ libraryDependencies += "io.spray" %%  "spray-json" % "1.3.3"
 
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.41"
 libraryDependencies += "org.playframework.anorm" %% "anorm" % "2.6.1"
+
+libraryDependencies ++= Seq(
+  "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % "test"
+)
