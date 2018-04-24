@@ -6,6 +6,8 @@
 #### Project Introduction
 A simple trip planning application using [Google Maps API](https://developers.google.com/maps/) to search specific destinations via different transports and time slots, implemented with __Scala and Play framework__
 
+Note: CSS and JavaScript codes are part of the Bootstrap model for better web User Interface
+
 #### Team members  
 Yiyi Zhou: <Zhou.yiy@husky.neu.edu>  
 Yang Li: <Li.yang5@husky.neu.edu>  
