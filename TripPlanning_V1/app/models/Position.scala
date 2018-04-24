@@ -37,7 +37,7 @@ object Position{
 
     //use google geocode api to get position of other location
     val newAddress = address.substring(1,(address.length-1))
-    val url:String = "https://maps.googleapis.com/maps/api/geocode/json?address="+newAddress+"&key=AIzaSyDXzvtFluKI4_o5HtmGmKYXDlWv0DDzqKI";
+    val url:String = "https://maps.googleapis.com/maps/api/geocode/json?address="+newAddress+"&key=YOUR_API_KEY";
     val result = scala.io.Source.fromURL(url).mkString
 
     import play.api.libs.json._
@@ -51,7 +51,7 @@ object Position{
     println("lat:"+lat);
     println("lon:"+lon);
     val info = lat+","+lon;
-    val url:String = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+info+"&key=AIzaSyDXzvtFluKI4_o5HtmGmKYXDlWv0DDzqKI";
+    val url:String = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+info+"&key=YOUR_API_KEY";
     val result = scala.io.Source.fromURL(url).mkString
     import play.api.libs.json._
     val resultJson:JsValue = Json.parse(result)

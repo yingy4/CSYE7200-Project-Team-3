@@ -14,7 +14,7 @@ object Place{
       "query="+keyword+
       "&radius=500" +
       "&location="+location+
-      "&key=AIzaSyD3e4H1xcvtu3cwsB4iOQ9inDpH9zOVIjQ"
+      "&key=YOUR_API_KEY"
 
     val result = scala.io.Source.fromURL(url).mkString;
 
@@ -117,7 +117,7 @@ object Place{
       "&origins="+ location +
       "&destinations="+ format_id +
       "&mode="+ mode +
-      "&key=AIzaSyBycYYHkKqe9uu7sQxOf7z4px41mH3FJuE";
+      "&key=YOUR_API_KEY";
 
     val response = scala.io.Source.fromURL(url).mkString;
 
@@ -136,7 +136,7 @@ object Place{
   def getPlaceDetailById(id:String):Place = {
     val url = "https://maps.googleapis.com/maps/api/place/details/json?" +
       "placeid="+id+
-      "&key=AIzaSyD3e4H1xcvtu3cwsB4iOQ9inDpH9zOVIjQ"
+      "&key=YOUR_API_KEY"
 
     val result = scala.io.Source.fromURL(url).mkString;
 

@@ -5,7 +5,7 @@ object MailInfo{
   def getPlaceInfo(id:String):MailInfo = {
     val url = "https://maps.googleapis.com/maps/api/place/details/json?" +
       "placeid="+id+
-      "&key=AIzaSyD3e4H1xcvtu3cwsB4iOQ9inDpH9zOVIjQ"
+      "&key=YOUR_API_KEY"
     val result = scala.io.Source.fromURL(url).mkString;
     import play.api.libs.json._
     val jsonResult: JsValue = Json.parse(result)
