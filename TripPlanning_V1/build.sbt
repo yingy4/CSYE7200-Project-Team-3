@@ -32,7 +32,7 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % "test"
 )
 
-libraryDependencies += "org.scala-js" %% "scalajs-library" % "0.6.20"
+//libraryDependencies += "org.scala-js" %% "scalajs-library" % "0.6.20"
 
 
 

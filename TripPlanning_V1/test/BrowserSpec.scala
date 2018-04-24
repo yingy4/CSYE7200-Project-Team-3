@@ -18,5 +18,4 @@ class BrowserSpec extends PlaySpec
       pageSource must include ("A simple trip planning application")
     }
   }
-
 }
