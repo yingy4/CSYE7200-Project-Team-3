@@ -16,7 +16,6 @@ create table place (
  primary key (place_id)
 );
 
-
 create table fav(
  id            int not null AUTO_INCREMENT,
  user_id   int,

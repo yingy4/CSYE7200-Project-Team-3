@@ -13,6 +13,7 @@
     function OnInput (event) {
         if(event.target.value == document.getElementById("password").value){
             document.getElementById("password_error").innerText = "OK"
+            document.getElementById("password_error").style.color = "green"
         }else{
             document.getElementById("password_error").innerText = "TWO PASSWORD NOT SAME"
         }
@@ -23,6 +24,7 @@
 
             if(event.srcElement.value == document.getElementById("password").value){
                 document.getElementById("password_error").innerText = "OK"
+                document.getElementById("password_error").style.color = "green"
             }else{
                 document.getElementById("password_error").innerText = "TWO PASSWORD NOT SAME"
             }

@@ -76,10 +76,6 @@ class UsecaseController @Inject()(cc: ControllerComponents,userService: UserRepo
     }
 
 
-
-
-
-
   }
 
   //POST /usecase2_form

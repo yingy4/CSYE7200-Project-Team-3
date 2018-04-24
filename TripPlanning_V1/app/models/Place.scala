@@ -10,14 +10,25 @@ object Place{
   //use text search to get place list
   def GetPlaceList(keyword: String, location:String,limitTime:Int, mode:String): Array[Place] ={
 
+   val keywords = keyword.split(" ");
+   var newKeyword = "";
+   for(word<-keywords){
+     newKeyword+="+";
+     newKeyword+=word;
+   }
+
+
+    import scala.io.Source
     val url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" +
-      "query="+keyword+
-      "&radius=500" +
+      "query="+newKeyword+
+      "&radius=1000" +
       "&location="+location+
       "&key=AIzaSyD3e4H1xcvtu3cwsB4iOQ9inDpH9zOVIjQ"
 
-    val result = scala.io.Source.fromURL(url).mkString;
 
+    val result = Source.fromURL(url).mkString
+
+    println(result);
 
 
     import play.api.libs.json._
