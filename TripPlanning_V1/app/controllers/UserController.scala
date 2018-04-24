@@ -57,7 +57,6 @@ class UserController @Inject()(cc: ControllerComponents,
         }else{
           Ok(views.html.error("Login Failed, Username and password not pair. Try again."))
         }
-
       }
     )
   }
