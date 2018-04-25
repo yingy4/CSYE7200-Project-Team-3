@@ -4,6 +4,12 @@ scala:
 jdk:
   - oraclejdk8
 
+services:
+  - mysql
+
+before_install:
+  - mysql -u root --password="2222z2222"
+
 script:
   - pwd
   - ls -a
@@ -12,5 +18,4 @@ script:
 notifications:
   email:
     - Zhou.yiy@husky.neu.edu
-    - Li.yang5@husky.neu.edu
-    - Liu.zheng4@husky.neu.edu
+    
