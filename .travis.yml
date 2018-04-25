@@ -16,6 +16,7 @@ script:
   - pwd
   - ls -a
   - cd TripPlanning_V1
+  - sbt ++$TRAVIS_SCALA_VERSION test
 
 notifications:
   email:
